@@ -1,0 +1,23 @@
+
+***********Feel free to do anything you want, any edit in design.
+***********what in the file is just suggestions.
+
+
+Reference home Page: https://office365.emis.gov.eg/
+
+Reference example SignUp and SignIn Form for teacher:  https://office365.emis.gov.eg/
+
+reference SignIn for students :https://moe-register.emis.gov.eg/account/login?ReturnUrl=%2Fhome%2FRegistrationForm
+
+To do:
+	1-Student signIn as in site_2, add QR scan Area. to It.
+	2-combin all teacher Form, Student Form and home page, would 	be better if in the same Html.
+	3-remove unused code parts, Files etc.
+	
+	
+	
+
+
+
+
+
