@@ -13,11 +13,5 @@ To do:
 	1-Student signIn as in site_2, add QR scan Area. to It.
 	2-combin all teacher Form, Student Form and home page, would 	be better if in the same Html.
 	3-remove unused code parts, Files etc.
+	4-your initial home, "index.html"
 	
-	
-	
-
-
-
-
-
