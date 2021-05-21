@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Teacher Controlpanel</title>
+    <link rel="stylesheet" type="text/css" href="../styles/all.min.css">
+    <link rel="stylesheet" type="text/css" href="../styles/all.css">
+    <link rel="stylesheet" type="text/css" href="../styles/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../styles/largeComputer/controlpanel.css">
+    <link rel="stylesheet" type="text/css" href="../styles/computer/controlpanel.css">
+    <link rel="stylesheet" type="text/css" href="../styles/tablet/controlpanel.css">
+    <link rel="stylesheet" type="text/css" href="../styles/mobile/controlpanel.css">
+    <link rel="stylesheet" type="text/css" href="../styles/statistic section.css">
+</head>
+
+<body>
+
+    <div class="container-fluid main-div">
+        <div class="row">
+            <div class="col-sm-3 main-navigator " id="navigation-panel">
+                <i class="fas fa-bars nav-button" id="navigation-button"></i>
+                <div class="navBtn container-fluid navigation-panel-div" onclick="getProfile(this)">
+                    <div class="row">
+                        <div class="col-sm-4 navigation-panel-images">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <div class="col-sm-8 navigation-panel-content " id="navigation-panel-content">
+                            <p id="teacher-nickname"></p>
+                            <p id="teacher" class="text-left">Mr.Ahmed Saleh</p>
+                        </div>
+                    </div>
+                </div>
+                <br> <br>
+                <div class="navBtn container-fluid col-centered navigation-panel-div" onclick="getNewExamPage(this)">
+                    <div class="row">
+                        <div class="col-sm-4 text-center navigation-panel-images">
+                            <i class="fas fa-plus-circle"></i>
+                        </div>
+                        <div class="col-sm-8 navigation-panel-content" id="navigation-panel-content">
+                            <p class="text-left">New Exam</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="navBtn container-fluid navigation-panel-div" onclick="getStudentAnswersPage(this)">
+                    <div class="row">
+                        <div class="col-sm-4 navigation-panel-images">
+                            <i class="fas fa-file-contract"></i>
+                        </div>
+                        <div class="col-sm-8 navigation-panel-content" id="navigation-panel-content">
+                            <p class="text-left">Student Answers</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="statisticDiv" class="navBtn container-fluid navigation-panel-div" onclick="getStatisticsPage()">
+                    <div class="row">
+                        <div class="col-sm-4 navigation-panel-images">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <div class="col-sm-8 navigation-panel-content" id="navigation-panel-content">
+                            <p class="text-left">Statistics</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="navBtn container-fluid navigation-panel-div" onclick="getSettingsPage(this)">
+                    <div class="row">
+                        <div class="col-sm-4 navigation-panel-images">
+                            <i class="fas fa-sliders-h"></i>
+                        </div>
+                        <div class="col-sm-8 navigation-panel-content" id="navigation-panel-content">
+                            <p class="text-left">Settings</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="navBtn container-fluid navigation-panel-div-home" onclick="getHomePage()">
+                    <div class="row">
+                        <div class="col-sm-4 navigation-panel-images">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <div class="col-sm-8 navigation-panel-content" id="navigation-panel-content">
+                            <p class="text-left">Home</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="contentDiv" class="col-sm-9 container-fluid content-div">
+
+            </div>
+        </div>
+    </div>
+
+    <script src="../scripts/html5shiv.min.js"></script>
+    <script src="../scripts/jquery-3.5.1.slim.min.js"></script>
+    <script src="../scripts/popper.js"></script>
+    <script src="../scripts/bootstrap.js "></script>
+    <script src="../scripts/Chart.min.js"></script>
+    <script src="../scripts/controlpanelCreator.js "></script>
+    <script src="../scripts/controlpanel.js "></script>
+
+</body>
+
+</html>
+<!--
+    <div class="row  " onmouseover="showClose(this)" onmouseout="hideClose(this)">0
+                <i id="newElement" class="fas fa-times-circle col-sm-offset-2 close-icon"></i>
+                <div class="col-sm-8 col-sm-offset-2 question-div">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#question" aria-controls="question" role="tab" data-toggle="tab">Question</a></li>
+                        <li role="presentation"><a href="#details" aria-controls="details" role="tab" data-toggle="tab">Details</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="question">
+                            <p class="text-left q-title">Useable Inputs : </p>
+                            <button type="button" class="btn btn-primary" onclick="addQuestion(this)">add/continue Question</button>
+                            <button type="button" class="btn btn-success" onclick="addAnswer(this)">add answer</button>
+                            <p class="text-left q-title">Answers : </p>
+                            <div class="question-group">
+                                <input type="text" class="question-field" onkeydown="responseInput(this)" onkeyup="responseInput(this)" required>
+                                <label class="question-group-label">Question</label>
+                            </div>
+
+                        </div>
+                        <div role="tabpanel" class="tab-pane details-question" id="details">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">Marks</span>
+                                <input type="number" class="form-control" placeholder="" aria-describedby="basic-addon1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+-->
