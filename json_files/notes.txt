@@ -1,0 +1,3 @@
+least will divied the result to all correct answer
+if there's 3 correctanswer and question result 1, each correct choice will give 0.333
+if choosed one wrong will decrease by .3

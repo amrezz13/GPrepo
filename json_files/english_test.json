@@ -1,55 +1,81 @@
 {
-    "code":1,
+    "code":"15df4",
     "title": "english test",
-    "time": "one_hour",
+    "time": 50,
     "author": "AmrMarey",
+    "author_mail":"ad@gmail.com",
+    "exam_lang":"ar",
     "Rules": ["never try to cheat","answers in english only"],
     "questions" :{
-        "q1":{
+        
+        "q1_text":{
             "question": " What is COVID-19?",
             "answer": "COVID-19 is the disease caused by a new coronavirus called SARS-CoV-2.  WHO first learned of this new virus on 31 December 2019, following a report of a cluster of cases of ‘viral pneumonia’ in Wuhan, People’s Republic of China.",
             "keywords":["china", "2019", "SARS"],
             "result": 1
         },
 
-        "q2":{
+        "q2_text":{
             "question":"What are the symptoms of COVID-19?",
             "answer":"The most common symptoms of COVID-19 are Fever Dry cough Fatigue Other symptoms that are less common and may affect some patients include: Loss of taste or smell, Nasal congestion, Conjunctivitis (also known as red eyes) Sore throat, Headache, Muscle or joint pain, Different types of skin rash, Nausea or vomiting, Diarrhea, Chills or dizziness. Symptoms of severe COVID‐19 disease include: Shortness of breath, Loss of appetite, Confusion, Persistent pain or pressure in the chest, High temperature (above 38 °C). Other less common symptoms are: Irritability, Confusion, Reduced consciousness (sometimes associated with seizures), Anxiety,Depression, Sleep disorders,  More severe and rare neurological complications such as strokes, brain inflammation, delirium and nerve damage. People of all ages who experience fever and/or cough associated with difficulty breathing or shortness of breath, chest pain or pressure, or loss of speech or movement should seek medical care immediately. If possible, call your health care provider, hotline or health facility first, so you can be directed to the right clinic.",
             "keywords":["fever","breathing", "cough"],
             "result": 1
         },
-        "q3":{
+        "q3_text":{
             "question":"What happens to people who get COVID-19?",
             "answer":"Among those who develop symptoms, most (about 80%) recover from the disease without needing hospital treatment. About 15% become seriously ill and require oxygen and 5% become critically ill and need intensive care,Complications leading to death may include respiratory failure, acute respiratory distress syndrome (ARDS), sepsis and septic shock, thromboembolism, and/or multiorgan failure, including injury of the heart, liver or kidneys. In rare situations, children can develop a severe inflammatory syndrome a few weeks after infection.",
             "kewords":["oxygen","hospital"],
             "result":1
 
         },
-        "q4":{
+        "q4_text":{
             "question":"What about rapid tests?",
             "answer": "Rapid antigen tests (sometimes known as a rapid diagnostic test – RDT) detect viral proteins (known as antigens). Samples are collected from the nose and/or throat with a swab. These tests are cheaper than PCR and will offer results more quickly, although they are generally less accurate. These tests perform best when there is more virus circulating in the community and when sampled from an individual during the time they are most infectious",
             "keywords":["protins","cheaper"],
             "result":1
         },
-        "q5": {
+        "q5_text": {
             "question":"Is there a vaccine for COVID-19?",
             "answer": "Yes. There are three COVID-19 vaccines for which certain national regulatory authorities have authorized the use. None have yet received WHO EUL/PQ authorization but we expect an assessment on the Pfizer vaccine by the end of December and for some other candidates soon thereafter.Large studies of 5 vaccine candidates efficacy and safety results, including these three (and for Moderna and AstraZeneca), have been publicly reported  through press releases but only one (AstraZeneca) has published results in the peer reviewed literature.  , We expect more such reports in the near future.  It is likely that additional candidates will be submitted to regulatory authorities for approval",
             "keywords":["yes", "pfizer"],
             "result":1
 
         },
-        "q6":{
+        "q6_text":{
             "question":"How long does it take to develop symptoms?",
             "answer":"The time from exposure to COVID-19 to the moment when symptoms begin is, on average, 5-6 days and can range from 1-14 days. This is why people who have been exposed to the virus are advised to remain at home and stay away from others, for 14 days, in order to prevent the spread of the virus, especially where testing is not easily available",
             "keywords":["5-6 days","1-14 days"],
             "result":1
         },
-        "q7":{
+        "q7_text":{
             "question":"Who is most at risk of severe illness from COVID-19?",
             "answer":"People aged 60 years and over, and those with underlying medical problems like high blood pressure, heart and lung problems, diabetes, obesity or cancer, are at higher risk of developing serious illness.",
             "keyword":["heart","diabetes"],
             "result":1
 
+        },
+        "q8_MCQ":{
+            "question":" What is COVID-19?",
+            "choices":["virus", "bacteria", "immune","ss"],
+            "answer": 1,
+            "result":1
+            
+        },
+        "q9_MAQ":{
+            "question":" What is COVID-19?",
+            "choices":["virus", "bacteria", "immune","ss"],
+            "answer": [2,4],
+            "resul_status":"exact",
+            "hint": "choose all corect",
+            "result":1
+        },
+        "q10_MAQ":{
+            "question":" What is COVID-20?",
+            "choices":["virus", "serie", "movie","bacteria"],
+            "answer":[1,2,3],
+            "status": "least",
+            "hint": "choose from choices",
+            "result":1
         }
         
     }
