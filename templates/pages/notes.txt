@@ -1,0 +1,18 @@
+in sign.html line 16
+the value you pass to url_for() not the value of the route but the value of the route function
+
+
+in sign.html line 17
+The form.hidden_tag() template argument generates a hidden field that includes a token that is used to protect the form against CSRF attacks. All you need to do to have the form protected is include this hidden field and have the SECRET_KEY variable defined in the Flask configuration. If you take care of these two things, Flask-WTF does the rest for you.
+
+The form tag needs some attributes set:
+
+action: The URL that the form data is sent to on submit. Generate it with url_for. It can be omitted if the same URL handles showing the form and processing the data.
+method="post": Submits the data as form data with the POST method. If not given, or explicitly set to get, the data is submitted in the query string (request.args) with the GET method instead.
+enctype="multipart/form-data": When the form contains file inputs, it must have this encoding set, otherwise the files will not be uploaded and Flask won't see them.
+The input tag needs a name parameter.
+
+Add a view to handle the submitted data, which is in request.form under the same key as the input's name. Any file inputs will be in request.files.
+
+
+
