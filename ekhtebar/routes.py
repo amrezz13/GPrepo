@@ -1,15 +1,7 @@
-from flask import Flask, render_template, flash, redirect, url_for
-from forms import TeacherLoginForm, RegesterForm, StudentLog
-app = Flask(__name__)  # something like main
+from flask import render_template, flash, redirect, url_for
+from ekhtebar import app
+from ekhtebar.forms import TeacherLoginForm, RegesterForm, StudentLog
 
-"""
-    how to generate the secure key?
-    get random charchaters, from terminal excute this list of commands 
-    python
-    import secrets 
-    secrets.token_hex(16)
-"""
-app.config['SECRET_KEY'] = '8c3330dbde9a977802c5971ccdd1ba62'
 
 # note that no "signup as student" in routes because it will be deleted
 
@@ -50,7 +42,3 @@ def about():
 @app.route("/ekhtebar/controlpanel")  # used exactly the same name in front
 def dashboard():
     return render_template('pages/controlpanel.html', title='dashboard')
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
