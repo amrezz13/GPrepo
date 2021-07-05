@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_mongoengine import MongoEngine
-
+from flask_bcrypt import Bcrypt
+from flask_login import LoginManager
 app = Flask(__name__)   # something like main
 """
     how to generate the secure key?
@@ -18,10 +19,18 @@ app.config['MONGODB_SETTINGS'] = {
 }
 db = MongoEngine()
 db.init_app(app)
+
 """
 db.init_app(app)
 This callback can be used to initialize an application for the use with this database setup.
 Never use a database in the context of an application not initialized that way or connections will leak.
 in SQL we use SQLAlchemy
 """
+
+
+bcrypt = Bcrypt(app)   # for encrypting passwords
+# using flask login manger to manage the authenatication
+login_manger = LoginManager(app)
+login_manger.login_view = 'login'
+login_manger.login_message_category = 'info'
 from ekhtebar import routes

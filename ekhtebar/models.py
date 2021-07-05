@@ -1,17 +1,25 @@
-from ekhtebar import db
+from ekhtebar import db, login_manger
+from flask_login import UserMixin
 
 
-class Teachers(db.Document):
-    teacher_mail = db.EmailField()
+# creating user loader function with decorator to load user id and information from database
+@login_manger.user_loader
+def load_user(teacher_mail):
+    return Teachers.objects.findOne({Teachers.teacher_mail: teacher_mail})
+
+
+class Teachers(db.Document, UserMixin):
+    """python allow multi inhertance if there's in the first class will inheret from the another """
     teacher_first_name = db.StringField()
     teacher_last_name = db.StringField()
-    password = db.StringField()
+    teacher_mail = db.EmailField()
     phone_number = db.StringField()
+    password = db.StringField()
     school = db.StringField()
     related_exams = db.ListField()
     meta = {
         'db_alias': 'core',
-        'collection': 'users',
+        'collection': 'teachers',
         'auto_create_index': False,
         'indexs': 'teacher_mail'
     }

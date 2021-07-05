@@ -5,6 +5,7 @@ from wtforms.validators import Length, Email, DataRequired, EqualTo, ValidationE
 from wtforms.fields.html5 import EmailField
 from ekhtebar.models import Teachers
 
+
 """
  كل سطر من دول بيمثل field فمثلا أول واحدة بتاعت الريجيستر حط في التصميم فيلد ياخد الميل والرقم وهكذا
 نفس النظام هتعمله في واجهة دخول الطالب وواجهة دخول المدرس 
@@ -27,17 +28,16 @@ class RegesterForm(FlaskForm):
         db.register_connection(alias='core', name='ekhtebar')
 
         # search query to check redundant users by email and block them
-        redundant_query = Teachers.objects(teacher_mail=teacher_mail.data)
+        redundant_query = Teachers.objects(teacher_mail=teacher_mail.data).first()
         # if user exist it will not be signed for now
-        if len(redundant_query) > 0:
-            raise ValidationError("Validation Error")
+        print(type(redundant_query))
 
 
 class TeacherLoginForm(FlaskForm):
     teacher_mail = StringField("Email")
     password = PasswordField("Password")
     remember = BooleanField('Remember me')
-    login = SubmitField('Login')
+    submit = SubmitField('Login')
 
 
 class StudentLog(FlaskForm):

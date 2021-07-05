@@ -16,3 +16,19 @@ Add a view to handle the submitted data, which is in request.form under the same
 
 
 
+Amr Ezz edited the passwords actions and fileds in html to check validty of passwords 
+to be :
+
+<div class="field">
+               <input onkeyup="active()" id="pswrd_1" type="password" placeholder="Enter Password">
+            </div>
+            <div class="field">
+               <input onkeyup="active_2()" id="pswrd_2" disabled type="password" placeholder="Confirm Password">
+               <div class="show">
+                  SHOW
+               </div>
+            </div>
+
+aslo edited the sign.js
+
+
