@@ -1,9 +1,8 @@
 from ekhtebar import db
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField
-from wtforms.validators import Length, Email, DataRequired, EqualTo, ValidationError
+from wtforms.validators import Length, Email, DataRequired, EqualTo
 from wtforms.fields.html5 import EmailField
-from ekhtebar.models import Teachers
 
 """
  كل سطر من دول بيمثل field فمثلا أول واحدة بتاعت الريجيستر حط في التصميم فيلد ياخد الميل والرقم وهكذا
@@ -23,14 +22,6 @@ class RegesterForm(FlaskForm):
     submit = SubmitField('Sign Up')
     #  I will add a validation function to registration form to check if user already exist
 
-    def validate_teacher_mail(self, teacher_mail):
-        db.register_connection(alias='core', name='ekhtebar')
-
-        # search query to check redundant users by email and block them
-        redundant_query = Teachers.objects(teacher_mail=teacher_mail.data)
-        # if user exist it will not be signed for now
-        if len(redundant_query) > 0:
-            raise ValidationError("Validation Error")
 
 
 class TeacherLoginForm(FlaskForm):
