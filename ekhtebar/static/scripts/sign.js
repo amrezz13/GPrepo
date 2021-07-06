@@ -7,7 +7,13 @@ signUpButton.addEventListener('click', () => {
 });
 
 signInButton.addEventListener('click', () => {
-    container.classList.remove("right-panel-active");
+  el = document.querySelector('.content_section');
+  
+  if(el.style.visibility == 'hidden'){
+      el.style.visibility = 'visible'
+  }else{
+     el.style.visibility = 'hidden'
+  }
 });
 
 function navigation() {

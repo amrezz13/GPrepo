@@ -1,5 +1,5 @@
 from flask import render_template, flash, redirect, url_for, request
-from ekhtebar import app, db, bcrypt
+from ekhtebar import app, bcrypt,db
 from ekhtebar.forms import TeacherLoginForm, RegesterForm, StudentLog
 from ekhtebar.models import Teachers
 from flask_login import login_user, current_user, logout_user, login_required
@@ -13,6 +13,7 @@ def home_page():
     return render_template('index.html')
 
 
+@app.route("/home/teacher_signup", methods=['GET', 'POST'])
 @app.route("/ekhtebar/teacher_signup", methods=['GET', 'POST'])  # used exactly the same name in front
 def signup_teacher():
     form = RegesterForm()
@@ -25,9 +26,12 @@ def signup_teacher():
                 teacher = Teachers(teacher_first_name=form.teacher_first_name.data,
                                    teacher_last_name=form.teacher_last_name.data, teacher_mail=form.teacher_mail.data,
                                    phone_number=form.phone_number.data, school=form.school.data,
-                                   password=hashed_password).save()
-                flash(f'{form.teacher_first_name.data}, Account Created Successfully, Log In now!', 'success')
+                                   password=hashed_password)
+                teacher.save()
+                flash(f'{form.teacher_first_name.data}, Account Created Successfully, Log In now As A Teacher!', 'mail_success')
                 return redirect(url_for('home_page'))
+            else:
+                flash(f'{form.teacher_mail.data}, Account already created, Log In now!', 'mail_exist')
 
     return render_template('pages/SignUpAsTeacher.html', title='Register', form=form)
 

@@ -53,15 +53,15 @@
         </div>
     </nav>
     <div>
-        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% with messages = get_flashed_messages(with_categories='mail_success') %}
 				{% if messages %}
 					{% for category, message in messages %}
 						<div class="alert alert-{{ category }}">
-							{{ message }}
+							<h3 href="{{ url_for('signin_teacher') }}">{{ message }}</h3>
 						</div>
 					{% endfor %}
 				{% endif %}
-			{% endwith %}
+        {% endwith %}
         <div id="carouselExampleCaptions" class="carousel slide  overflow-hidden  position-relative" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>

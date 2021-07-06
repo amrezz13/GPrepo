@@ -1,9 +1,7 @@
-from ekhtebar import db
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField
 from wtforms.validators import Length, Email, DataRequired, EqualTo
 from wtforms.fields.html5 import EmailField
-
 """
  كل سطر من دول بيمثل field فمثلا أول واحدة بتاعت الريجيستر حط في التصميم فيلد ياخد الميل والرقم وهكذا
 نفس النظام هتعمله في واجهة دخول الطالب وواجهة دخول المدرس 
@@ -20,8 +18,8 @@ class RegesterForm(FlaskForm):
     password = PasswordField("Password")
     confirm_password = PasswordField("Confirm_Password", validators=[EqualTo('password')])
     submit = SubmitField('Sign Up')
-    #  I will add a validation function to registration form to check if user already exist
 
+    #  I will add a validation function to registration form to check if user already exist
 
 
 class TeacherLoginForm(FlaskForm):

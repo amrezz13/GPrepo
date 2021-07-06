@@ -40,12 +40,24 @@
                 <div class="overlay-panel overlay-left">
                     <h1>Welcome!</h1>
                     <p>To keep connected with us please login with your personal info</p>
-                    <button class="ghost" id="signIn">Sign In</button>
+
+                {% with messages = get_flashed_messages(with_categories='mail_exist') %}
+				        {% if messages %}
+					        {% for category, message in messages %}
+						        <div class="text">
+							    {{ message }}
+						        </div>
+                                <br>
+                                <br>
+                                <button class="ghost"  onclick="location.href = '{{ url_for('signin_teacher') }}'; " >Sign in</button>
+					        {% endfor %}
+				        {% endif %}
+                {% endwith %}
                 </div>
                 <div class="overlay-panel overlay-right">
                     <h1>Hello, Friend!</h1>
-                    <p>Enter your personal details and start journey with us</p>
-                    <button class="ghost" id="signUp">Sign Up</button>
+                    <p>Enter your personal details and start build exams</p>
+                    <button class="ghost" id="signUp" >Sign Up</button>
                 </div>
             </div>
         </div>
