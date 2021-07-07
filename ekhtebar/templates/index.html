@@ -56,8 +56,8 @@
         {% with messages = get_flashed_messages(with_categories='mail_success') %}
 				{% if messages %}
 					{% for category, message in messages %}
-						<div class="alert alert-{{ category }}">
-							<h3 href="{{ url_for('signin_teacher') }}">{{ message }}</h3>
+						<div  class="alert alert-success" role="alert">
+							<h6 href="{{ url_for('signin_teacher') }}">{{ message }}</h6>
 						</div>
 					{% endfor %}
 				{% endif %}

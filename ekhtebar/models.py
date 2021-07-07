@@ -7,7 +7,6 @@ from flask_login import UserMixin
 def load_user(teacher_mail):
     return Teachers.objects(pk=teacher_mail).first()
 
-
 class Teachers(UserMixin, db.Document):
     """python allow multi inhertance if there's in the first class will inheret from the another """
     teacher_first_name = db.StringField()

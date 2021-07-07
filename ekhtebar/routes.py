@@ -1,9 +1,11 @@
 from flask import render_template, flash, redirect, url_for, request
-from ekhtebar import app, bcrypt,db
+from ekhtebar import app, bcrypt, db
 from ekhtebar.forms import TeacherLoginForm, RegesterForm, StudentLog
 from ekhtebar.models import Teachers
 from flask_login import login_user, current_user, logout_user, login_required
 # note that no "signup as student" in routes because it will be deleted
+
+db.register_connection(alias='core', name='ekhtebar')
 
 
 @app.route("/")
@@ -38,22 +40,22 @@ def signup_teacher():
 
 @app.route("/ekhtebar/teacher_login", methods=['GET', 'POST'])  # used exactly the same name in front
 def signin_teacher():
-    if current_user.is_authenticated:
-        return redirect(url_for('home_page'))
     form = TeacherLoginForm()
     if request.method == 'POST':
         if form.validate():
             db.register_connection(alias='core', name='ekhtebar')
-            user = Teachers.objects(teacher_mail=form.teacher_mail.data).first()
-            if bcrypt.check_password_hash(user['password'], form.password.data):
-                return redirect(url_for('dashboard'))
+            user = Teachers.objects(teacher_mail=form.inputEmail.data).first()
+            if user is not None:
+                if bcrypt.check_password_hash(user['password'], form.inputPassword.data):
+                    return redirect(url_for('home_page'))
+            flash( 'Please Check email or password', 'login_fail')
+
     return render_template('pages/SignInAsTeacher.html', title='Log In', form=form)
 
 
 @app.route("/ekhtebar/student_login")  # used exactly the same name in front
 def sign_student():
-    form = StudentLog()
-    return render_template('pages/SignInAsStudent.html', title='Student Log', form=form)
+    return render_template('pages/SignInAsStudent.html', title='Student Log')
 
 
 @app.route("/ekhtebar/about")    # used exactly the same name in front

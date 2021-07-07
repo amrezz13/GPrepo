@@ -23,10 +23,10 @@ class RegesterForm(FlaskForm):
 
 
 class TeacherLoginForm(FlaskForm):
-    teacher_mail = StringField("Email")
-    password = PasswordField("Password")
+    inputEmail = StringField("Email")
+    inputPassword = PasswordField("Password")
     remember = BooleanField('Remember me')
-    login = SubmitField('Login')
+    submit = SubmitField('Login')
 
 
 class StudentLog(FlaskForm):
