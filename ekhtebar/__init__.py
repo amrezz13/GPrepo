@@ -32,6 +32,6 @@ in SQL we use SQLAlchemy
 bcrypt = Bcrypt(app)   # for encrypting passwords
 # using flask login manger to manage the authenatication
 login_manger = LoginManager(app)
-login_manger.login_view = 'login'
+login_manger.login_view = 'signin_teacher'
 login_manger.login_message_category = 'info '
 from ekhtebar import routes

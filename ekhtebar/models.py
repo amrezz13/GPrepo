@@ -16,6 +16,8 @@ class Teachers(UserMixin, db.Document):
     password = db.StringField()
     school = db.StringField()
     related_exams = db.ListField()
+
+
     meta = {
         'db_alias': 'core',
         'collection': 'teachers',

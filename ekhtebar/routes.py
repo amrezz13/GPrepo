@@ -18,6 +18,8 @@ def home_page():
 @app.route("/home/teacher_signup", methods=['GET', 'POST'])
 @app.route("/ekhtebar/teacher_signup", methods=['GET', 'POST'])  # used exactly the same name in front
 def signup_teacher():
+    if current_user.is_authenticated:
+        return redirect(url_for('home_page'))
     form = RegesterForm()
     if request.method == 'POST':
         if form.validate_on_submit():
@@ -30,7 +32,8 @@ def signup_teacher():
                                    phone_number=form.phone_number.data, school=form.school.data,
                                    password=hashed_password)
                 teacher.save()
-                flash(f'{form.teacher_first_name.data}, Account Created Successfully, Log In now As A Teacher!', 'mail_success')
+                flash(f'{form.teacher_first_name.data}, Account Created Successfully, Log In now As A Teacher!',
+                      'mail_success')
                 return redirect(url_for('home_page'))
             else:
                 flash(f'{form.teacher_mail.data}, Account already created, Log In now!', 'mail_exist')
@@ -40,6 +43,8 @@ def signup_teacher():
 
 @app.route("/ekhtebar/teacher_login", methods=['GET', 'POST'])  # used exactly the same name in front
 def signin_teacher():
+    if current_user.is_authenticated:
+        return redirect(url_for('home_page'))
     form = TeacherLoginForm()
     if request.method == 'POST':
         if form.validate():
@@ -47,8 +52,10 @@ def signin_teacher():
             user = Teachers.objects(teacher_mail=form.inputEmail.data).first()
             if user is not None:
                 if bcrypt.check_password_hash(user['password'], form.inputPassword.data):
-                    return redirect(url_for('home_page'))
-            flash( 'Please Check email or password', 'login_fail')
+                    login_user(user, remember=form.remember.data) # line where user logged in
+                    next_page = request.args.get('next') # get the next page after Log in
+                    return redirect(next_page) if next_page else redirect(url_for('home_page'))
+            flash('Please Check email or password', 'login_fail')
 
     return render_template('pages/SignInAsTeacher.html', title='Log In', form=form)
 
@@ -63,6 +70,13 @@ def about():
     pass
 
 
-@app.route("/ekhtebar/controlpanel")  # used exactly the same name in front
+@app.route("/ekhtebar/logout")
+def logout():
+    logout_user()
+    return redirect(url_for('home_page'))
+
+
+@app.route("/ekhtebar/dashboard")  # used exactly the same name in front
+@login_required
 def dashboard():
     return render_template('pages/controlpanel.html', title='dashboard')

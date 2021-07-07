@@ -37,18 +37,32 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="nav justify-content-end ml-auto ">
+                {% if current_user.is_authenticated %}
+                    <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ url_for('home_page') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ url_for('dashboard') }}">Dashboard</a>
+                </li>
                 <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ url_for('logout')}}">Logout</a>
+                </li>
+                {% else %}
+                    <li class="nav-item">
                     <a class="nav-link text-white" href="{{ url_for('signin_teacher') }}">Login as Teacher</a>
-                </li>
-                <li class="nav-item">
+                    </li>
+                    <li class="nav-item">
                     <a class="nav-link text-white" href="{{ url_for('signup_teacher') }}">Sign Up as Teacher</a>
-                </li>
-                <li class="nav-item">
+                    </li>
+                    <li class="nav-item">
                     <a class="nav-link text-white" href="{{ url_for('sign_student')}}">Login as Student</a>
-                </li>
+                    </li>
+                {% endif %}
+
                 <li class="nav-item">
                     <a class="nav-link text-white" href="#">Contact Us</a>
                 </li>
+
             </ul>
         </div>
     </nav>

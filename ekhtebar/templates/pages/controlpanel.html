@@ -73,16 +73,17 @@
                         </div>
                     </div>
                 </div>
-                <div class="navBtn container-fluid navigation-panel-div-home" onclick="getHomePage()">
+                <div class="navBtn container-fluid navigation-panel-div-home" onclick="location.href='{{ url_for('logout') }}';">
                     <div class="row">
                         <div class="col-sm-4 navigation-panel-images">
                             <i class="fas fa-home"></i>
                         </div>
                         <div class="col-sm-8 navigation-panel-content" id="navigation-panel-content">
-                            <p class="text-left">Home</p>
+                            <p class="text-left">Log out</p>
                         </div>
                     </div>
                 </div>
+
             </div>
             <div id="contentDiv" class="col-sm-9 container-fluid content-div">
 
