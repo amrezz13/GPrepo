@@ -28,7 +28,7 @@
                         </div>
                         <div class="col-sm-8 navigation-panel-content " id="navigation-panel-content">
                             <p id="teacher-nickname"></p>
-                            <p id="teacher" class="text-left">Mr.Ahmed Saleh</p>
+                            <p id="teacher" class="text-left">{{ current_user.teacher_first_name }}  {{ current_user.teacher_last_name }}</p>
                         </div>
                     </div>
                 </div>
@@ -96,8 +96,10 @@
     <script src="../../static/scripts/popper.js"></script>
     <script src="../../static/scripts/bootstrap.js "></script>
     <script src="../../static/scripts/Chart.min.js"></script>
-    <script src="../../static/scripts/controlpanelCreator.js "></script>
-    <script src="../../static/scripts/controlpanel.js "></script>
+    <script src="{{ url_for('static',  filename='scripts/controlpanelCreator.js') }}"></script>
+    <script type="text/javascript">var user = {{ user|tojson }}; </script>
+    <script src="{{ url_for('static', filename='scripts/controlpanel.js') }}"></script>
+
 
 </body>
 

@@ -76,7 +76,8 @@ def logout():
     return redirect(url_for('home_page'))
 
 
-@app.route("/ekhtebar/dashboard")  # used exactly the same name in front
+@app.route("/ekhtebar/dashboard", methods=['GET', 'POST'])  # used exactly the same name in front
 @login_required
 def dashboard():
-    return render_template('pages/controlpanel.html', title='dashboard')
+    user = current_user
+    return render_template('pages/controlpanel.html', title='dashboard', user=current_user)
