@@ -5,7 +5,7 @@ var navigationPanel = document.getElementById("navigation-panel");
 var contentDiv = document.getElementById("contentDiv");
 
 function getHomePage() {
-    window.location = '../index.html';
+    window.location = '../../templets/index.html';
 }
 
 function togglePanel() {
@@ -83,37 +83,41 @@ function creatNewElements(divs) {
         mainRowDiv.appendChild(rowDiv);
         mainDiv.appendChild(mainRowDiv);
     }
-    divs.insertBefore(mainDiv, divs.children[divs.children.length - 1]);
+    divs.insertBefore(mainDiv, divs.children[divs.children.length - 2]);
 
 }
 var QuestionTypes = {
     q1: { name: "Multi Choice Question", fun: "multi" },
     q2: { name: "Short Answers", fun: "short" },
-    q3: { name: "Math", fun: "math" },
-    q4: { name: "Complete Syntax", fun: "complete" },
-    q5: { name: "Multi Answer Question", fun: "multiAnswers" },
-    q6: { name: "Short Answers", fun: "short" },
-    q7: { name: "Math", fun: "math" },
-    q8: { name: "Complete Syntax", fun: "complete" }
+    q3: { name: "Complete Syntax", fun: "complete" },
+    q4: { name: "Multi Answer Question", fun: "multiAnswers" },
+    q5: { name: "Draw", fun: "draw" },
+    q6: { name: "Math", fun: "math" },
+    q7: { name: "UnKnown", fun: "UnKnown" },
+    q8: { name: "UnKnown", fun: "UnKnown" }
 }
+
+var questionId = 0;
 
 function creatQuestionWithType(div, question) {
     var parent = div.parentNode.parentNode.parentNode.parentNode;
     console.log(parent)
     var divIndex = Array.prototype.indexOf.call(parent.children, div.parentNode.parentNode.parentNode);
     var questionContent;
+    questionId++;
     switch (question) {
         case "multi":
-            questionContent = getMultiQuetionDiv(divIndex);
+            questionContent = getMultiQuetionDiv(divIndex, questionId);
+            console.log(questionId);
             break;
         case "short":
-            questionContent = getShortQuetionDiv(divIndex);
+            questionContent = getShortQuetionDiv(divIndex, questionId);
             break;
         case "complete":
-            questionContent = getCompeletQuestionDiv(divIndex);
+            questionContent = getCompeletQuestionDiv(divIndex, questionId);
             break;
         case "multiAnswers":
-            questionContent = getMultiAnswerDiv(divIndex);
+            questionContent = getMultiAnswerDiv(divIndex, questionId);
             break;
 
 
@@ -132,3 +136,15 @@ $(document).ready(function() {
         $(this).attr('data-value', $(this).val());
     });
 });
+
+function submitting() {
+    $("#exampleModalCenter").modal()
+
+}
+
+
+function save() {
+    console.log("save" + document.getElementById("time").value);
+    document.getElementById("contentDiv").submit();
+    $("#exampleModalCenter").modal("hide");
+}

@@ -1,6 +1,5 @@
 getStatisticsPage();
 
-
 function getNewExamPage(div) {
     var titDiv = document.createElement("div");
     titDiv.classList.add("row", "element-div");
@@ -25,6 +24,7 @@ function getNewExamPage(div) {
 
     var float = document.createElement("div");
     float.classList.add("submitting");
+    float.addEventListener("click", submitting);
     var floatIcon = document.createElement("i");
     floatIcon.classList.add("far", "fa-save");
     float.appendChild(floatIcon);
@@ -36,7 +36,25 @@ function getNewExamPage(div) {
     div.classList.add("active-ele");
 
     var body = document.getElementById("contentDiv");
-    body.innerHTML = "";
+    body.innerHTML = `<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Set Exam Time</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                          </button>
+                                </div>
+                                <div class="modal-body">
+                                    <input type="number" id="time" name="time" value="0"><span>seconds</span>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" onclick="save()">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`
     body.appendChild(titDiv);
     body.appendChild(addNewQuestioDiv);
     body.appendChild(float);
@@ -68,207 +86,207 @@ function getStatisticsPage() {
 
     var body = document.getElementById("contentDiv");
     body.innerHTML = `<div class="container-fluid">
-            <div class="d-sm-flex align-items-center justify-content-between
-                mb-4">
-                <h1 class="h3 mb-0 text-gray-800">STATISTICS</h1>
-            </div>
-            <div class="row">
-                <div class="col-xl-3 col-md-6 mb-4">
-                    <div class="card border-left-primary shadow h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold
-                                        text-primary text-uppercase mb-1">
-                                        Students Number</div>
-                                    <div class="h5 mb-0 font-weight-bold
-                                        text-gray-800">40,000</div>
-                                </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-calendar fa-2x
-                                        text-gray-300"></i>
-                                </div>
-                            </div>
+    <div class="d-sm-flex align-items-center justify-content-between
+        mb-4">
+        <h1 class="h3 mb-0 text-gray-800">STATISTICS</h1>
+    </div>
+    <div class="row">
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold
+                                text-primary text-uppercase mb-1">
+                                Students Number</div>
+                            <div class="h5 mb-0 font-weight-bold
+                                text-gray-800">40,000</div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-md-6 mb-4">
-                    <div class="card border-left-success shadow h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold
-                                        text-success text-uppercase mb-1">
-                                        Teachers Number</div>
-                                    <div class="h5 mb-0 font-weight-bold
-                                        text-gray-800">2,000</div>
-                                </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-calendar fa-2x
-                                        text-gray-300"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-md-6 mb-4">
-                    <div class="card border-left-info shadow h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold
-                                        text-info text-uppercase mb-1">Exams
-                                    </div>
-                                    <div class="row no-gutters
-                                        align-items-center">
-                                        <div class="col-auto">
-                                            <div class="h5 mb-0 mr-3
-                                                font-weight-bold text-gray-800">50%</div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="progress progress-sm
-                                                mr-2">
-                                                <div class="progress-bar
-                                                    bg-info" role="progressbar"
-                                                    style="width: 50%"
-                                                    aria-valuenow="50"
-                                                    aria-valuemin="0"
-                                                    aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-clipboard-list fa-2x
-                                        text-gray-300"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-md-6 mb-4">
-                    <div class="card border-left-warning shadow h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold
-                                        text-warning text-uppercase mb-1">Comments
-                                    </div>
-                                    <div class="h5 mb-0 font-weight-bold
-                                        text-gray-800">18</div>
-                                </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-comments fa-2x
-                                        text-gray-300"></i>
-                                </div>
-                            </div>
+                        <div class="col-auto">
+                            <i class="fas fa-calendar fa-2x
+                                text-gray-300"></i>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-6 mb-4">
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
-                        </div>
-                        <div class="card-body">
-                            <h4 class="small font-weight-bold">Server Migration
-                                <span class="float-right">50%</span></h4>
-                            <div class="progress mb-4">
-                                <div class="progress-bar bg-danger"
-                                    role="progressbar" style="width: 50%"
-                                    aria-valuenow="20" aria-valuemin="0"
-                                    aria-valuemax="100"></div>
-                            </div>
-                            <h4 class="small font-weight-bold">Sales Tracking
-                                <span class="float-right">40%</span></h4>
-                            <div class="progress mb-4">
-                                <div class="progress-bar bg-warning"
-                                    role="progressbar" style="width: 40%"
-                                    aria-valuenow="40" aria-valuemin="0"
-                                    aria-valuemax="100"></div>
-                            </div>
-                            <h4 class="small font-weight-bold">Customer Database
-                                <span class="float-right">60%</span></h4>
-                            <div class="progress mb-4">
-                                <div class="progress-bar" role="progressbar"
-                                    style="width: 60%" aria-valuenow="60"
-                                    aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <h4 class="small font-weight-bold">Payout Details
-                                <span class="float-right">80%</span></h4>
-                            <div class="progress mb-4">
-                                <div class="progress-bar bg-info"
-                                    role="progressbar" style="width: 80%"
-                                    aria-valuenow="80" aria-valuemin="0"
-                                    aria-valuemax="100"></div>
-                            </div>
-                            <h4 class="small font-weight-bold">Account Setup
-                                <span class="float-right">Complete!</span></h4>
-                            <div class="progress">
-                                <div class="progress-bar bg-success"
-                                    role="progressbar" style="width: 100%"
-                                    aria-valuenow="100" aria-valuemin="0"
-                                    aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-5">
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3 d-flex flex-row
-                            align-items-center justify-content-between">
-                            <h6 class="m-0 font-weight-bold text-primary">Revenue
-                                Sources</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="chart-pie pt-4 pb-2">
-                                <canvas id="doughnut-chart" width="400"
-                                    height="300"></canvas>
-                            </div>
-                            <div class="mt-4 text-center small">
-                                <span class="mr-2">
-                                    <i class="fas fa-circle text-primary"></i>
-                                    Direct
-                                </span>
-                                <span class="mr-2">
-                                    <i class="fas fa-circle text-success"></i>
-                                    Social
-                                </span>
-                                <span class="mr-2">
-                                    <i class="fas fa-circle text-info"></i>
-                                    Referral
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
-        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ready to
-                            Leave?</h5>
-                        <button class="close" type="button" data-dismiss="modal"
-                            aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">Select "Logout" below if you are
-                        ready to end your current session.</div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button"
-                            data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="login.html">Logout</a>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold
+                                text-success text-uppercase mb-1">
+                                Teachers Number</div>
+                            <div class="h5 mb-0 font-weight-bold
+                                text-gray-800">2,000</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-calendar fa-2x
+                                text-gray-300"></i>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>`
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold
+                                text-info text-uppercase mb-1">Exams
+                            </div>
+                            <div class="row no-gutters
+                                align-items-center">
+                                <div class="col-auto">
+                                    <div class="h5 mb-0 mr-3
+                                        font-weight-bold text-gray-800">50%</div>
+                                </div>
+                                <div class="col">
+                                    <div class="progress progress-sm
+                                        mr-2">
+                                        <div class="progress-bar
+                                            bg-info" role="progressbar"
+                                            style="width: 50%"
+                                            aria-valuenow="50"
+                                            aria-valuemin="0"
+                                            aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-clipboard-list fa-2x
+                                text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold
+                                text-warning text-uppercase mb-1">Comments
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold
+                                text-gray-800">18</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-comments fa-2x
+                                text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 mb-4">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
+                </div>
+                <div class="card-body">
+                    <h4 class="small font-weight-bold">Server Migration
+                        <span class="float-right">50%</span></h4>
+                    <div class="progress mb-4">
+                        <div class="progress-bar bg-danger"
+                            role="progressbar" style="width: 50%"
+                            aria-valuenow="20" aria-valuemin="0"
+                            aria-valuemax="100"></div>
+                    </div>
+                    <h4 class="small font-weight-bold">Sales Tracking
+                        <span class="float-right">40%</span></h4>
+                    <div class="progress mb-4">
+                        <div class="progress-bar bg-warning"
+                            role="progressbar" style="width: 40%"
+                            aria-valuenow="40" aria-valuemin="0"
+                            aria-valuemax="100"></div>
+                    </div>
+                    <h4 class="small font-weight-bold">Customer Database
+                        <span class="float-right">60%</span></h4>
+                    <div class="progress mb-4">
+                        <div class="progress-bar" role="progressbar"
+                            style="width: 60%" aria-valuenow="60"
+                            aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <h4 class="small font-weight-bold">Payout Details
+                        <span class="float-right">80%</span></h4>
+                    <div class="progress mb-4">
+                        <div class="progress-bar bg-info"
+                            role="progressbar" style="width: 80%"
+                            aria-valuenow="80" aria-valuemin="0"
+                            aria-valuemax="100"></div>
+                    </div>
+                    <h4 class="small font-weight-bold">Account Setup
+                        <span class="float-right">Complete!</span></h4>
+                    <div class="progress">
+                        <div class="progress-bar bg-success"
+                            role="progressbar" style="width: 100%"
+                            aria-valuenow="100" aria-valuemin="0"
+                            aria-valuemax="100"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-5">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3 d-flex flex-row
+                    align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Revenue
+                        Sources</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-pie pt-4 pb-2">
+                        <canvas id="doughnut-chart" width="400"
+                            height="300"></canvas>
+                    </div>
+                    <div class="mt-4 text-center small">
+                        <span class="mr-2">
+                            <i class="fas fa-circle text-primary"></i>
+                            Direct
+                        </span>
+                        <span class="mr-2">
+                            <i class="fas fa-circle text-success"></i>
+                            Social
+                        </span>
+                        <span class="mr-2">
+                            <i class="fas fa-circle text-info"></i>
+                            Referral
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ready to
+                    Leave?</h5>
+                <button class="close" type="button" data-dismiss="modal"
+                    aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Select "Logout" below if you are
+                ready to end your current session.</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button"
+                    data-dismiss="modal">Cancel</button>
+                <a class="btn btn-primary" href="login.html">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>`
     new Chart(document.getElementById("doughnut-chart"), {
         type: 'doughnut',
         data: {
@@ -311,68 +329,68 @@ function getProfile(div) {
 
     var body = document.getElementById("contentDiv");
     body.innerHTML = `<div class="container-fluid">
-                <div class="main-body">
-                    <div class="row gutters-sm">
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="d-flex flex-column align-items-center text-center">
-                                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
-                                        <div class="mt-3">
-                                            <h4>${user.teacher_first_name}</h4>
-                                            </div>
-                                    </div>
+    <div class="main-body">
+        <div class="row gutters-sm">
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                            <div class="mt-3">
+                                <h4>${user.teacher_first_name}</h4>
                                 </div>
-                            </div>
-
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card mb-3">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <h6 class="mb-0">Full Name</h6>
-                                        </div>
-                                        <div class="col-sm-9 text-secondary">
-                                            ${user.teacher_first_name}  ${user.teacher_last_name}
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <h6 class="mb-0">Email</h6>
-                                        </div>
-                                        <div class="col-sm-9 text-secondary">
-                                            ${user.teacher_mail}
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <h6 class="mb-0">Phone</h6>
-                                        </div>
-                                        <div class="col-sm-9 text-secondary">
-                                            ${user.phone_number}
-                                        </div>
-                                    </div>
-                                    <hr>
-
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <h6 class="mb-0">School</h6>
-                                        </div>
-                                        <div class="col-sm-9 text-secondary">
-                                            ${user.school}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
                         </div>
                     </div>
                 </div>
-            </div>`
+
+            </div>
+            <div class="col-md-8">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Full Name</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                ${user.teacher_first_name}  ${user.teacher_last_name}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Email</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                ${user.teacher_mail}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Phone</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                ${user.phone_number}
+                            </div>
+                        </div>
+                        <hr>
+
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">School</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                ${user.school}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>`
 
 }
 
