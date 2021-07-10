@@ -25,7 +25,6 @@ function getNewExamPage(div) {
 
     var float = document.createElement("div");
     float.classList.add("submitting");
-    float.addEventListener("click", submitting);
     var floatIcon = document.createElement("i");
     floatIcon.classList.add("far", "fa-save");
     float.appendChild(floatIcon);
@@ -37,25 +36,7 @@ function getNewExamPage(div) {
     div.classList.add("active-ele");
 
     var body = document.getElementById("contentDiv");
-    body.innerHTML = `<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">Set Exam Time</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                      </button>
-                            </div>
-                            <div class="modal-body">
-                                <input type="number" id="time" name="time" value="0"><span>seconds</span>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary" onclick="save()">Save changes</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>`
+    body.innerHTML = "";
     body.appendChild(titDiv);
     body.appendChild(addNewQuestioDiv);
     body.appendChild(float);
