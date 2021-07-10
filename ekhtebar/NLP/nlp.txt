@@ -1,0 +1,28 @@
+stop words
+Stopwords are words which are filtered out during the pre-processing or post-processing of text. To get the stopwords for English models, you can use the following code:
+{'whence', 'never', 'do', 'yourself', 'behind', 'between', 'eleven', 'it', 'have', 'already', 'always', 'am', 'hence', 'whoever', 'moreover', 'itself', 'most', 'quite', 'has', "'re", 'if', 'into', 'her', 'back', 'whom', 'sometime', 'every', 'hers', 'see', 'namely', 'becoming', 'yours', 'various', "'d", 'therein', 'does', 'i', 'anything', 'another', 'seems', 'towards', 'he', 'part', "'ll", 'they', 'seemed', 'where', 'forty', 'had', 'empty', 'others', 'together', 'whereafter', 'amount', 'within', 'top', "'ve", 'there', 'twelve', 'latterly', 'nothing', 'out', 'nobody', 'everywhere', 'either', 'via', 'indeed', 'that', 'three', 'except', '’m', 'who', 'although', 'anywhere', 'around', 'should', 'somehow', 'enough', 'less', 'myself', 'here', 'keep', 'perhaps', 'off', 'give', 'his', 'doing', 'everything', 'beside', 'me', 'could', 'hereupon', 'just', 'also', 'we', 'what', 'however', 'say', 'eight', 'make', 'down', 'himself', 'those', 'nevertheless', '‘ve', 'made', 'four', '’re', 'elsewhere', 'you', 'mine', 'their', 'whole', 'its', 'beyond', 'someone', 'upon', 'ca', 'get', 'side', 'by', 'whenever', 'anyway', 'really', 'put', 'call', 'though', 'not', 'up', 'last', '’s', 'nowhere', 'bottom', 'more', 'many', 'anyhow', 'fifteen', 'how', 'wherever', 'than', 'themselves', 'from', 'the', 'become', 'sixty', 'cannot', 'without', 'yourselves', "'s", '‘d', 'and', 'no', 'all', 'was', 'can', 'when', 'n’t', 'show', 'latter', 'might', 'whereby', 'during', 'meanwhile', 'serious', 'only', 'becomes', 'besides', 'she', 'in', 'ever', 'thereafter', 'five', 'him', 'something', 'whose', 'please', 'became', 'using', 'sometimes', 'go', 'of', 'thru', 'throughout', 'very', 'first', 'us', 'n‘t', 'must', 'third', 'noone', 'whereupon', "'m", 'hundred', 'your', 'be', 'former', 'as', 'regarding', 'same', 'therefore', 'whatever', 'any', 'is', 'nor', 'since', 'a', 'being', 'afterwards', 'thence', 'too', 'alone', 'still', 'due', 'along', 'onto', 'before', 'thereby', 'almost', 'six', 'hereby', 'front', 'but', 'are', 'once', 'among', '’d', 'ten', 'after', 'or', 'until', 'twenty', 'so', 'per', 'for', 'full', 'seeming', 'other', 'much', 'may', 'on', 'none', 'an', 'anyone', 'well', 'whereas', 'herself', 'did', 'everyone', 'fifty', 'formerly', 'seem', 'hereafter', 'over', 'name', 'even', 'whither', 'then', 'been', 'these', 'two', 'move', 'such', 'least', 'several', "n't", 'done', '‘s', 'mostly', 'which', 'this', '’ve', 'ours', 'beforehand', 'about', 'below', 'both', 'again', 'own', 'somewhere', 'amongst', 're', 'few', 'further', 'above', 'against', 'will', 'because', 'otherwise', 'were', 'herein', 'across', 'my', 'ourselves', 'thus', '‘m', 'neither', '‘re', 'one', 'at', 'some', 'unless', 'used', 'take', 'now', 'yet', 'else', 'to', 'through', 'whether', 'thereupon', 'why', 'rather', 'next', 'with', 'often', 'wherein', 'while', 'under', '’ll', 'nine', 'each', '‘ll', 'our', 'toward', 'would', 'them'}
+
+def stop words
+Convert the text into lower case (case-insensitive matching).
+Declare a list variable to store the results.
+Loop over each of the words.
+Check if the word found in the list of stop words.
+Append the word to the list variable.
+Join the words into a sentence and return the result.
+
+
+def remove_stopwords(text):
+    doc = nlp(text.lower())
+    result = []
+    for token in doc:
+        if token.text in nlp.Defaults.stop_words:
+            continue
+        result.append(token.text)
+    return "".join(result)
+
+def remove_pronounce(text):
+    doc = nlp(text.lower())
+    result = [token.lemma_ for token in doc if token.lemma_ != '-PRON-']
+    return " ".join(result)
+
+
