@@ -142,9 +142,18 @@ function submitting() {
 
 }
 
+// stop redirect after submmitting
+$("#contentDiv").submit(function(e) {
+       e.preventDefault();
+       return false;
+});
 
 function save() {
     console.log("save" + document.getElementById("time").value);
-    document.getElementById("contentDiv").submit();
     $("#exampleModalCenter").modal("hide");
+    var formData = new FormData(document.getElementById("contentDiv"));
+    var object = {};
+    formData.forEach((value, key) => object[key] = value);
+    var json = JSON.stringify(object);
+    console.log(json)
 }
