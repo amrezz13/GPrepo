@@ -27,7 +27,15 @@ class Teachers(UserMixin, db.Document):
 
 
 class Exam(db.Document):
-    pass
+    exam = StringField()
+    
+    meta = {
+        'db_alias': 'core',
+        'collection': 'teachers',
+        'auto_create_index': False,
+        'indexs': 'teacher_mail'
+    }
+    
 
 
 class Student(db.Document):
