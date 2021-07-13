@@ -31,9 +31,9 @@ class Exam(db.Document):
     
     meta = {
         'db_alias': 'core',
-        'collection': 'teachers',
+        'collection': 'exames',
         'auto_create_index': False,
-        'indexs': 'teacher_mail'
+        'indexs': 'code'
     }
     
 
